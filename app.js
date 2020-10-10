@@ -12,7 +12,6 @@ const findOrCreate = require('mongoose-findorcreate');
 const app = express();
 
 app.set('view engine', 'ejs');
-
 // tis is very imp to get values from post req.
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
@@ -49,10 +48,8 @@ userSchema.plugin(findOrCreate);
 
 const User = mongoose.model("User",userSchema);
 
-// passport.use(User.createStrategy());
-//
-// passport.serializeUser(User.serializeUser());
-// passport.deserializeUser(User.deserializeUser());
+//This line of code is very imp in order to do authentication using passportLocalMongoose
+passport.use(User.createStrategy());
 
 passport.serializeUser(function( user, done ) {
     done( null, user.id);
