@@ -34,6 +34,8 @@ const userSchema = new mongoose.Schema({
   googleId: String
 });
 
+//These lines of code imp in order to verify multiple google account
+// if not add these lines so we can only add one google account only otherwise gives error after one account
 userSchema.index({
   email: 1,
   password:1,
